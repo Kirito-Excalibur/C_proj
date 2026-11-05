@@ -1,0 +1,6 @@
+# Build output
+output/
+web/runtime/build/
+
+# Pre-uncommenting backup of the lab sources
+originals/

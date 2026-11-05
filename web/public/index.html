@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C Lab</title>
+  <link rel="stylesheet" href="vendor/codemirror.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>C Lab</h1>
+    <span class="current-file"><span id="fileName">No file open</span><span id="dirtyMark" class="dirty-mark" hidden> &bull; unsaved</span></span>
+    <div class="actions">
+      <span id="saveNote" class="save-note" role="status"></span>
+      <button id="revertBtn" type="button" title="Discard edits and reload this file from disk" disabled>Revert</button>
+      <button id="saveBtn" type="button" title="Save to disk (Ctrl+S)" disabled>Save</button>
+      <button id="stopBtn" type="button" title="Stop the running program" disabled>Stop</button>
+      <button id="runBtn" type="button" class="primary" title="Compile and run (Ctrl+Enter)" disabled>Run</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <nav class="files" aria-label="Source files">
+      <div class="files-head">
+        <h2>Files</h2>
+        <button id="newBtn" type="button" title="Create a new C file">New</button>
+      </div>
+      <form id="newForm" class="new-form" hidden>
+        <label for="newName">File name</label>
+        <input id="newName" type="text" placeholder="my_lab.c" autocomplete="off" spellcheck="false">
+        <p id="newError" class="form-error" role="alert"></p>
+      </form>
+      <ul id="fileList"></ul>
+    </nav>
+
+    <section class="editor-pane" aria-label="Code editor">
+      <textarea id="editor"></textarea>
+    </section>
+
+    <div class="output">
+      <section class="panel graphics" aria-labelledby="gfxTitle">
+        <header class="panel-head">
+          <h2 id="gfxTitle">Graphics</h2>
+          <span id="gfxSize" class="muted"></span>
+          <span id="keyHint" class="key-hint" hidden>Waiting for a key: click here and press one</span>
+        </header>
+        <div class="canvas-wrap">
+          <canvas id="screen" width="800" height="600" tabindex="0" aria-label="Graphics output. Focus here to send key presses to the program."></canvas>
+          <p id="noGraphics" class="placeholder">Graphics appear here when a program calls initgraph().</p>
+        </div>
+      </section>
+
+      <section class="panel console" aria-labelledby="consoleTitle">
+        <header class="panel-head">
+          <h2 id="consoleTitle">Console</h2>
+          <span id="status" class="status" role="status" data-state="idle">Ready</span>
+          <button id="clearBtn" type="button" class="quiet">Clear</button>
+        </header>
+        <pre id="console" tabindex="0" aria-label="Program output"></pre>
+        <form id="stdinForm" class="stdin">
+          <label for="stdinInput" aria-hidden="true">&gt;</label>
+          <input id="stdinInput" type="text" placeholder="Type input for the program and press Enter" autocomplete="off" spellcheck="false" aria-label="Program input" disabled>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <script src="vendor/codemirror.js"></script>
+  <script src="vendor/clike.js"></script>
+  <script src="vendor/matchbrackets.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

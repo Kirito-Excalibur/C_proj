@@ -1,0 +1,8 @@
+{
+    "c-cpp-compile-run.c-flags": "-Wall -Wextra -g3 -I/home/megakirito/C_proj/compat -I/usr/local/include",
+    "c-cpp-compile-run.c-linker-flags": "-L/usr/local/lib64 -Wl,-rpath,/usr/local/lib64 -lSDL_bgi -lSDL2 -lm",
+    "code-runner.runInTerminal": true,
+    "code-runner.executorMap": {
+        "c": "cd $dir && mkdir -p output && gcc -Wall -Wextra -g3 -I$workspaceRoot/compat -I/usr/local/include $fileName -o \"output/$fileNameWithoutExt\" -L/usr/local/lib64 -Wl,-rpath,/usr/local/lib64 -lSDL_bgi -lSDL2 -lm && \"./output/$fileNameWithoutExt\""
+    }
+}
